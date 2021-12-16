@@ -1,0 +1,841 @@
+*, *::before, *::after{
+   padding: 0;
+   margin: 0;
+   border: 0;
+   box-sizing: border-box;}
+
+/* .wrapper{
+   max-width: 1370px;
+   padding-left: 15px;
+   padding-right: 15px;
+   margin: 0 auto;
+} */
+body{
+   font-family: 'Montserrat', sans-serif;
+   color: black;
+   font-size: 14px;
+}
+.wrapper{
+   min-height: 100%;
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+}
+a{
+   text-decoration: none;
+}
+li{
+   list-style-type: none;
+}
+/* -----ограничивающий контейнер */
+._container{
+   max-width: 1046px;
+   margin: 0px auto;/* БУДЕТ ПО СЕРЕДИНЕ */
+   padding: 0px 15px;
+   box-sizing: content-box;/* без этого пиши 104рх + 30рх с отступами */
+}
+
+/* ------------------------------------------------header */
+
+.header {
+   position: absolute;
+   width: 100%;
+   left: 0;
+   top: 0;
+   z-index: 50;/* что б была на первом месте */
+}
+.header__container {
+   display: flex;
+   min-height: 104px;
+   align-items: center;
+}
+@media (max-width: 479px){
+   .header__container{
+      min-height: 80px;
+   }
+}
+.header__menu{
+   margin: 0 0 0 133px;
+}
+@media (max-width: 992px){
+   .header__menu{
+      margin: 0 0 0 80px;/* уменьшается отступ при 999px */
+   }
+}
+@media (max-width: 767px){
+   .header__menu{
+      margin: 0 0 0 40px;/* уменьшается отступ при 999px */
+   }
+}
+.menu{
+   padding: 5px 0;/* не обяз, отступ безоп-ти */
+}
+.menu__list{
+   display: flex;
+   flex-wrap: wrap;/* при сужении ссылки будут ломаться */
+}
+.header__logo {
+   font-size: 24px;
+   font-weight: 700;
+   color: inherit;/* ссылка, что б наслдеовала */
+}
+.menu__item:not(:last-child){/* что б не было отступа у посл */
+   margin: 0px 21px 0px 0px;
+}
+.menu__link {
+   color: #737373;
+   font-weight: 600;
+   line-height: 171%;
+}
+@media (max-width: 479px){
+   .menu__link{
+      font-size: 16px;
+   }
+}
+/* ----------------------------------------------------------main */
+
+.page{
+   flex: 1 1 auto;
+}
+.main-block {
+   position: relative;/* для фонов картинки */
+}
+.main-block__body {
+   padding: 184px 0 191px 0;
+   position: relative;
+   z-index: 2;/* что б текст появился на картинке */
+   max-width: 400px;
+}
+@media (max-width: 992px){
+   .main-block__body{
+      padding: 100px 0 191px 0;
+   }
+}
+/* обращение к эл-там первого уровня, 35пкс отспут не считая последнего */
+.main-block__body > *:not(:last-child){
+   margin: 0px 0px 35px 0px;
+}
+.main-block__title {
+   font-size: 58px;
+   font-weight: 800;
+   line-height: 138%;
+   letter-spacing: 0.2px;
+}
+@media (max-width:479px){
+   .main-block__title{
+      font-size: 40px;
+   }
+}
+.main-block__text {
+   max-width: 376px;
+   font-size: 20px;
+   font-weight: 500;
+   line-height: 150%;
+   letter-spacing: 0.2px;
+}
+/* -------button  */
+/* если 2 разные кнопки, делай 2 разных класса */
+.main-block__buttons {
+   display: inline-flex;
+   flex-wrap: wrap;/* будутли эл-ты ломаться */
+}
+@media(max-width:992px){
+   .main-block__buttons a{
+      margin-bottom: 5px ;
+   }
+}
+.main-block__button {
+   font-size: 14px;
+   line-height: 200%;
+   text-align: center;
+   font-weight: 700;
+   letter-spacing: 0.2px;
+   border: 1px solid #0D5C63;
+   border-radius: 37px;
+   padding: 5px 35px;
+   margin-right: 10px;
+}
+.main-block__button:last-child{
+   margin-right: 0;
+}
+.main-block__button_orange{
+   background: #FF7B47 ;
+   color: white;
+}
+.main-block__button_border {
+   color: #0D5C63;
+   border: 1px solid #0D5C63;
+}
+/*  _ibg чтоб картинка была фоном */
+._ibg{
+   position: relative;
+}
+._ibg img{
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   object-fit: cover;
+}
+.main-block__image{/* пишется вместе с _ibg */
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+}
+@media (max-width: 1300px) {
+   .main-block__image img{
+      object-position: right;/* что б картинка уменьшалась с экраном */
+   }
+}
+@media (max-width: 992px) {
+   .main-block__image {
+      opacity: 0.5;/* выбеливаем к-ку, чтоб текст читался  */
+   }
+}
+/* -----------------------------------------------------------services */
+
+
+.page__services{
+   /* эти 3 значения позв-ют поднять 3 блока над 1 частью */
+   position: relative;
+   z-index: 2;
+   margin: -111px 0px 0px 0px;
+}
+@media(min-width:670px){
+   .services__body {
+      display: flex;
+      margin: 0 -15px -30px;
+      flex-wrap: wrap;
+   } 
+}
+.services__column {
+   padding: 0 15px;
+   flex: 0 1 33.33%;/* разделил на размеры на 3 колонки */
+   margin: 0 0 30px 0;
+}
+@media(max-width:992px){
+   .services__column {
+      flex: 0 1 50%;
+   }
+   .services__column:last-child{
+      flex: 1 1 100%;
+   }
+}
+.services__item {
+   box-shadow: 0px 13px 19px #00000012;
+   background: #FFFFFF;
+   padding: 35px 40px;
+   height: 100%; /* что б были на одном уровне вeщи внутри блоков */
+}
+/* обращение к эл-там первого ур, 10пкс отспут не считая последнего */
+.item-service > *:not(:last-child) {
+   margin: 0px 0px 10px 0px;
+}
+.item-service__title {
+   font-weight: bold;
+   font-size: 24px;
+   line-height: 133%;
+   letter-spacing: 0.1px;
+}
+.item-service__text {
+   font-size: 14px;
+   line-height: 143%;
+   letter-spacing: 0.2px;
+}
+.item__service_green{
+   background: #0D5C63;
+   color: white;
+}
+/* ---------------------------------------------------------advantages */
+/* ЭТО ОБЩИЙ ДЛЯ ДРУГИХ БЛОКОВ */
+.header-block {
+   text-align: center;
+}
+.header-block__title {
+   font-size: 40px;
+   line-height: 142%;
+   color: #252B42;
+   font-weight: bold;
+}
+.header-block__sub-title {
+   font-size: 14px;
+   line-height: 143%;
+   color: #737373;
+}
+.advantages__header {
+   padding: 80px 0 50px 0;
+   /* margin: 0px 0px 50px 0px; */
+}
+.advantages__body {
+   display: flex;
+   margin: 0px -15px -30px;
+   flex-wrap: wrap;
+}
+@media(max-width:1050px){
+   .advantages__body{
+      margin-bottom: 10px;
+   }
+}
+.advantages__column {
+   padding: 0px 15px;
+   margin: 0px 0px 30px 0px;
+   flex: 0 1 25%;/* разделяет блок по 25%, но выше должен display-flex */
+   margin-bottom: 50px;
+}
+@media (max-width:1050px){
+   .advantages__column{
+      flex: 0 1 50%;
+      margin-bottom: 10px;
+   }
+}
+.advantages__item {
+   background-color: #FFFFFF;
+   padding: 30px ;
+   text-align: center;
+}
+@media (max-width:1050px){
+   .advantages__item{
+      padding: 0;
+   }
+}
+/* обращение к эл-там первого уровня, 10пкс отспут не считая последнего */
+.advantages__item > *:not(last-child) {
+   margin: 0px 0px 10px 0px;
+}
+.advantages__icon {
+   display: flex;
+   height: 48px;
+   align-items: flex-end;
+   justify-content: center;
+}
+.advantages__value {
+   color: #252B42;
+   font-size: 40px;
+   line-height: 142%;
+   letter-spacing: 0.2px;
+   font-weight: bold;
+}
+.advantages__text {
+   color: #737373;
+   font-size: 16px;
+   line-height: 150%;
+   letter-spacing: 0.1px;
+   font-weight: bold;
+}
+/* ---------------------------------------------------------practice */
+
+.practice {
+   padding: 40px 0 80px 0;
+}
+.practice__header {
+   margin-bottom: 45px;
+}
+.practice__body {
+   margin: 0 -20px;
+   display: flex;
+   flex-wrap: wrap;
+}
+.practice__column {
+   padding: 0 20px;
+   flex: 0 1 25%;
+}
+@media(max-width:1040px){
+   .practice__column{
+      padding: 0 20px;
+      flex: 0 1 50%;
+   }
+}
+@media(max-width:630px){
+   .practice__column{
+      flex: 0 1 100%;
+   }
+}
+.item-practice {
+   background-color: #fff;
+   display: flex;/* чтоб колонки были в одну высоту */
+   flex-direction: column;/* чтоб колонки были в одну высоту */
+   height: 100%;/* чтоб колонки были в одну высоту */
+}
+.item-practice__content{
+   padding: 30px;
+   flex: 1 1 auto;/* чтоб колонки были в одну высоту при увелич-ии текста */
+}
+
+.item-practice__link {
+   display: inline-block;
+   margin-bottom: 15px;
+}
+/* отступ от ссылки */
+/* .item-practice__link:not(:last-child) {
+   margin: 0px 0px 15px 0px;
+} */
+.item-practice__title {
+   color: #252B42;
+   font-size: 16px;
+   line-height: 150%;
+   letter-spacing: 0.1px;
+}
+.item-practice__text {
+   color: #737373;
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 143%;
+   letter-spacing: 0.2px;
+}
+/* что б картинка ототбразилась */
+.item-practice__img{
+   display: block;
+   padding: 0 0 67% 0;
+}
+
+/* --------------------------------------------------------who we are */
+
+
+.whoweare {
+   padding: 80px 0 130px 0;
+}
+@media(max-width:950px){
+   .whoweare{
+      padding: 10px 0 20px 0;
+   }
+}
+.whoweare__header {
+   margin-bottom: 100px;
+}
+@media(max-width:950px){
+   .whoweare__header{
+      margin-bottom: 40px;
+   }
+}
+.whoweare__body {
+   display: flex;
+   align-items: flex-start;
+}
+@media(max-width:950px){
+   .whoweare__body{
+      flex-direction: column-reverse;/* чтоб усначала был текст, потом видео */
+      align-items: stretch;/* чтоб отобразилось видео при уменьш, потому что написл align-item=flex-start */
+   }
+}
+/* video--------------------------------------------------------------- */
+.whoweare__video {
+   flex: 0 0 57%;/* высчитать ширину видео */
+   position: relative;
+   padding: 0 0 42.25% 0;
+}
+/* @media(max-width:1040px){
+   .whoweare__video{
+      padding: 0 20px;
+      flex: 0 1 50%;
+   }
+} */
+.whoweare__video iframe{
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   object-fit: cover;
+}
+@media(max-width:950px){
+   .whoweare__video{
+      margin: 20px 0 0 0 ;
+      padding: 0 0 56.25% 0;/* чтоб видео было норм размера */
+   }
+}
+/* -------------------------------------- */
+.whoweare__content {
+   flex: 1 1 auto;
+   padding: 20px 0 0 121px;
+}
+@media(max-width:1080px){
+   .whoweare__content{
+      padding: 0 0 0 50px;
+      text-align: center;
+      padding: 10px 0 0 10px;
+   }
+}
+
+.whoweare__title {
+   font-size: 40px;
+   line-height: 142%;
+   letter-spacing: 0.2px;
+   margin-bottom: 10px;
+}
+.whoweare__text {
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 143%;
+   letter-spacing: 0.2px;
+   margin-bottom: 30px;
+}
+.whoweare___item {
+   display: flex;
+   margin-bottom: 30px;
+}
+.whoweare___item:last-child{
+   margin: 0;
+}
+.item-whoweare__icon {
+   margin-right: 20px;
+}
+.item-whoweare__title {
+   font-size: 16px;
+   line-height: 150%;
+   font-weight: bold;
+   letter-spacing: 0.1px;
+   margin-bottom: 5px;
+}
+.item-whoweare__text {
+   font-weight: 600;
+   font-size: 14px;
+   line-height: 24px;
+   letter-spacing: 0.2px;
+}
+/* ---------------------------------------------------------clients */
+
+.page__clients:not(:last-child) {
+   margin: 0 0 10px 0;
+}
+.clients {
+   padding: 30px 0;
+}
+.clients__items {
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.clients__utem {
+   padding: 8 15px;
+   flex: 0 1 16.66%;
+   text-align: center;
+}
+.clients__utem{
+   max-width: 100%;
+   padding: 20px;
+}
+@media(max-width:345px){
+   .clients__utem{
+      padding: 10px;
+   }
+}
+/* ----------------------------------------------------page__subscribe */
+
+.subscribe {
+   position: relative;/* чтоб сделать полоску под ним */
+   padding: 0 0 20px 0;/* чтоб сделать полоску под ним */
+}
+/* -------------------это синяя полоса под ним */
+.subscribe::before{
+   position: absolute;
+   content: '';
+   background: #252B42;
+   bottom: 0;
+   width: 100%;
+   height: 77px;
+}
+.subscribe__body {
+   position: relative;/* дял полоски */
+   z-index: 2;/* для полоски */
+   padding: 30px 50px;
+   align-items: center;
+   background: #17213C;
+   border-radius: 2px;
+}
+/* для мобильной адаптации */
+@media (min-width:1070px){
+   .subscribe__body {
+      margin: 0 10px;
+   }
+}
+@media (min-width:810px){
+   .subscribe__body{
+      display: flex;
+      justify-content: space-between;
+   }
+}
+@media (max-width:810px){
+   .subscribe__body{
+      padding: 15px 15px;
+   }
+}
+.subscribe__title {
+   font-size: 24px;
+   line-height: 133%;
+   max-width: 266px;
+   font-weight: bold;
+   letter-spacing: 0.1px;
+   color: #FFFFFF;
+}
+@media (max-width:810px){
+   .subscribe__title{
+      padding: 10px 0;
+   }
+}
+.subscribe_form {
+   flex: 0 1 50%;/* делим кнопку и форму */
+   display: flex;
+   align-items: center;
+   /* min-height: 58px; */
+}
+.subscribe__input {
+   width: 100%;/* чтоб уменьшалось для мобилок  */
+   flex: 1 1 auto;
+   min-height: 58px;
+   background: #F9F9F9;
+   border: 1px solid #E6E6E6;
+   font-size: 14px;
+   line-height: 200%;
+   letter-spacing: 0.2px;
+   color: #737373;
+   border-radius: 5px 0 0 5px;
+   padding: 0 20px;
+   box-sizing: border-box;
+}
+.subscribe__button {
+   background: #FF7B47;
+   border: 1px solid #E6E6E6;
+   border-radius: 0px 5px 5px 0px;
+   display: flex;
+   min-height: 58px;
+   align-items: center;
+   text-align: center;
+   padding: 0 24px;
+   color: white;
+}
+
+/* -------------------------------------------------------getintouch */
+.getintouch {
+   padding: 40px 0 30px 0;
+   background: #F3F3F3;
+}
+.getintouch__header {
+   margin: 0 0 80px 0;
+}
+/* для мобильной верстки */
+@media(min-width:992px){
+   .getintouch__items {
+      display: flex;
+      align-items: center;
+   }
+}
+.getintouch__item {
+   flex: 0 1 33.33%;/* одинак ширина */
+   /* padding: 50px 80px; */
+}
+.item-getintouch {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background-color: white;
+   padding: 50px 40px;
+}
+@media(max-width:768px){
+   .item-getintouch {
+      padding: 20px 30px;;
+   }
+}
+/* не будет отступа у последнего */
+.item-getintouch >*:not(:last-child){
+   margin-bottom: 15px;
+}
+.item-getintouch__emails {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.item-getintouch__email {
+   color: inherit;/* цвет наследуется */
+   font-weight: 600;
+   font-size: 14px;
+   line-height: 171%;
+   text-align: center;
+   letter-spacing: 0.2px;
+}
+.item-getintouch__email:hover{
+   text-decoration: underline;
+}
+.item-getintouch__label {
+   font-size: 16px;
+   line-height: 150%;
+   text-align: center;
+   letter-spacing: 0.1px;
+   font-weight: bold;
+}
+.item-getintouch__button {
+   border: 1px solid #FF7B47;
+   border-radius: 5px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   min-height: 44px;
+   padding: 10px 20px;
+   color: #FF7B47;
+   font-weight: 600;
+   transition: all 0.5s ease;
+}
+.item-getintouch__button:hover{
+   background-color: #FF7B47;
+   color: white;
+}
+.item-getintouch__active{
+   background: #252B42;
+   color: white;
+   padding: 90px 80px;
+}
+@media(max-width:768px){
+   .item-getintouch__active {
+      padding: 20px 30px;;
+   }
+}
+.item-getintouch__active .item-getintouch__button{
+   color: white;
+   border: 1px solid white;
+}
+/* ------------------------------------------------------conttact */
+
+@media(min-width:767px){
+   .contact__body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+}
+.contact__content {
+   padding: 40px 0 40px 0;
+}
+.contact__title {
+   font-weight: bold;
+   font-size: 24px;
+   line-height: 133%;
+   letter-spacing: 0.1px;
+   color: #252B42;
+}
+.contact__text {
+   font-weight: 500;
+   
+   font-size: 14px;
+   line-height: 143%;
+   letter-spacing: 0.2px;
+   color: #737373;
+}
+.contact__button {
+   display: flex;
+   padding: 15px 40px;
+   background: #FF7B47;
+   border-radius: 5px;
+   font-weight: bold;
+   color: white;
+}
+@media(max-width:767px){
+   .contact__button{
+      margin-bottom: 20px;
+   }
+}
+.contact__button:hover{
+   color: #FF7B47 ;
+   background: white;
+   border: 1px solid  #FF7B47;
+}
+
+/* -------------------------------------------------------footer */
+.footer__top {
+   background: #17213C;
+   padding: 50px 0;
+}
+.footer__row{
+   margin: 0 -15px;
+   flex-wrap: wrap;
+   display: flex;
+}
+.footer__column {
+   padding: 20px 15px;
+   flex: 0 1 16.6667%;
+   min-width: 170px;
+}
+.footer__column:last-child{
+   flex: 0 1 33.334%;
+}
+.footer__label {
+   color: white;
+   font-weight: bold;
+   font-size: 16px;
+   line-height: 150%;
+   letter-spacing: 0.1px;
+   margin-bottom: 20px;
+}
+.menu-footer__item {
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 171%;
+   letter-spacing: 0.2px;
+}
+.menu-footer__item:not(:last-child){
+   margin-bottom: 10px;
+}
+.menu-footer__link {
+   color: white;
+}
+.contacts-footer {
+   display: flex;
+   flex-direction: column;
+}
+.contacts-footer__item:not(:last-child){
+   margin-bottom: 12px;
+}
+.contacts-footer__item {
+   padding: 0 0 0 34px;
+   display: flex;
+   align-items: center;
+   min-height: 30px;
+   color: white;
+}
+.contacts-footer__item_phone {
+   background: url(./img/footer/01.svg) left no-repeat;
+}
+.contacts-footer__item_map {
+   background: url(./img/footer/02.svg) left no-repeat;
+}
+.contacts-footer__item_mail {
+   background: url(./img/footer/03.svg) left no-repeat;
+}
+.footer__container {
+   padding: 25px 0;
+   display: flex;
+      justify-content: space-between;
+      align-items: center;
+}
+@media(max-width:767px){
+   .footer__container{
+      flex-direction: column;
+   }
+   .footer__copy{
+      margin-bottom: 10px;
+      text-align: center;
+   }
+}
+.footer__copy{
+   font-weight: 600;
+   font-size: 14px;
+   line-height: 171%;
+   letter-spacing: 0.2px;
+   color: #737373;
+}
+.footer__social {
+   margin-right: 40px;
+}
+.social {
+   display: flex;
+   align-items: center;
+}
+.social__item:not(:last-child){
+   margin-right: 20px;
+}
